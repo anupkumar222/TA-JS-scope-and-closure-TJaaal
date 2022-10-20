@@ -119,5 +119,5 @@ for (let i = 0; i < 10; i++) {
 //  9 'First'
 
 }
-console.log(i, 'Second'); //  10 'Second'
+console.log(i, 'Second'); //  undefined
 ```
