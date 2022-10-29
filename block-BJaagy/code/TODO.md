@@ -32,22 +32,20 @@ let multipleWithTwo = multiplyArrayByN([2], multiplyByTwo);
 
 ```js
 function forEach(str, cb) {
-  return letters.forEach(letter => {
-    cb(letter);
-  })
- 
+ for(let ele of str) {
+  cb(ele);
+ }
 }
 
 // Test Your Code
 let alphabet = '';
 let letters = ['a', 'b', 'c', 'd'];
 
-function alpha() {
+
 forEach(letters, function (char) {
   alphabet += char;
 });
 
-} 
 console.log(alphabet); //prints 'abcd'
 ```
 
