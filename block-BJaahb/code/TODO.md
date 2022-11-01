@@ -37,14 +37,14 @@ counter(); // 4
 3. Create the execution context diagram
 
 ```js
-function makeColorChanger(color) {
+````function makeColorChanger(color) {
   return function () {
     document.body.style.backgroundColor = color;
   };
 }
 
 let blue = makeColorChanger('blue');
-let tomato = makeColorChanger('tomato');
+let tomato = makeColorChanger('tomato');````
 
 blue();
 tomato();
