@@ -16,8 +16,10 @@ sayHello();
 
 ```js
 // Your code goes here
-function delay(argument1, cb) {
-
+function delay(cb, ms) {
+  return function () {
+    setTimeout(cb, ms);
+  }
 }
 ```
 
@@ -46,16 +48,16 @@ lastNameLee('Lynne'); //logs 'Lynne Lee'
 
 ```js
 function storyWriter() {
-  let string = "";
-  function modify(story) {
-   return string += story;
-  }
+  let story = "";
+
  return {
-  addWords : function () {
-  return  modify(string);
+  addWords : function (word) {
+  story += word;
+  return story;
   },
   erase : function () {
-    // return string = "";
+    story = "";
+    return story;
   }
  }
 }
@@ -79,11 +81,13 @@ When `forEach` function is called it returns another function. When the returned
 ```js
 function forEach(array) {
   let index = 0;
-  function 
+ return function () {
+  return array[index++];
+ }
 
 }
 
-let next = [1, 2, 3, 4, 5];
+let next = forEach([1, 2, 3, 4, 5]);
 next(); // 1
 next(); // 2
 next(); // 3
@@ -176,9 +180,16 @@ arya.setLastName('Lannister'); // "Jon Lannister"
 The returned function accepts a string (children) and returns the children with the tag you passed.
 
 ```js
-function createTag(ele) {
-  return function (string) {
-    return `<${ele}>${string}<${ele}>`
+// function createTag(ele) {
+//   return function (string) {
+//     return `<${ele}>${string}<${ele}>`
+//   }
+// }
+function createTag(tag) {
+  return function (child) {
+    let elm = document.createElement(tag);
+    elm.innerText = child;
+    return elm;
   }
 }
 
