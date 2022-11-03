@@ -64,7 +64,20 @@ var nextMessage = sayHello('Test');
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declaration Phase
+var username = undefined;
+let number;
+
+function sayHello(name) {
+  return `Hello ${name}`;
+}
+let message;
+var nextMessage = undefined;
+
+// Execution Phase
+console.log(Arya, `not defined`);
+
+
 ```
 
 3.
