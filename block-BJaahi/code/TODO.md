@@ -48,7 +48,7 @@ nextMessage = sayHello('Test');
 2.
 
 ```js
-console.log(username, numbers);
+console.log(username, number);
 
 var username = 'Arya';
 let number = 21;
@@ -83,7 +83,7 @@ console.log(Arya, `not defined`);
 3.
 
 ```js
-console.log(username, numbers);
+console.log(username, number);
 let username = 'Arya';
 let number = 21;
 
@@ -98,14 +98,23 @@ var nextMessage = sayHello('Test');
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// declaration phase
+let username;
+let number;
+
+let sayHello;
+let message;
+var nextMessage = undefined;
+
+// execution phase
+console.log(undefined, undefined);
 ```
 
 4.
 
 ```js
 let username = 'Arya';
-console.log(username, numbers);
+console.log(username, number);
 
 let number = 21;
 let message = sayHello(username);
@@ -120,7 +129,16 @@ var nextMessage = sayHello('Test');
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// declaration phase
+let username;
+let number;
+let message;
+let sayHello;
+
+var nextMessage = undefined;
+
+// execution phase
+console.log(Arya, undefined);
 ```
 
 5.
@@ -135,7 +153,14 @@ let age = 21;
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declaration phase
+
+var name = undefined;
+let age;
+
+// Execution phase
+Lyndia
+age not defined
 ```
 
 6.
@@ -154,7 +179,22 @@ sayHi();
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declaration phase
+function sayHi(name) {
+  console.log(name);
+  console.log(age);
+  var name = 'Lydia';
+  let age = 21;
+}
+// Execution Phase
+// Declaration Phase of sayHi
+var name = undefined;
+let age;
+
+// Execution Phase of sayHi
+undefined
+age is not defined
+
 ```
 
 7.
@@ -163,7 +203,7 @@ sayHi();
 sayHi();
 function sayHi(name) {
   console.log(name);
-  console.log(age);
+  // console.log(age);
   var name = 'Lydia';
   let age = 21;
 }
@@ -172,7 +212,22 @@ function sayHi(name) {
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declaration Phase
+function sayHi(name) {
+  console.log(name);
+  console.log(age);
+  var name = 'Lydia';
+  let age = 21;
+}
+// Execution Phase
+sayHi();
+// Declaration Phase of sayHi
+var name = undefined;
+let age;
+// Execution Phase of sayHi
+console.log(undefined)
+Cannot access 'age' before initialization
+
 ```
 
 8.
@@ -190,7 +245,13 @@ let sayHi = function sayHi(name) {
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declaration Phase
+let sayHi;
+var name = undefined;
+let age;
+
+// Execution phase
+sayHi is not defined
 ```
 
 9.
@@ -205,7 +266,13 @@ let num2 = 30;
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declaration Phase
+let num1;
+var sum;
+let num2;
+// Execution phase
+num1 = 21;
+console.log(undefined)
 ```
 
 10.
@@ -218,7 +285,7 @@ let sum2 = addAgain(num1, num2, 4, 5, 6);
 let add = (a, b, c, d, e) => {
   return a + b + c + d + e;
 };
-function addAgian(a, b) {
+function addAgain(a, b) {
   return a + b;
 }
 let num2 = 200;
@@ -229,7 +296,23 @@ let sum = add(num1, num2, 4, 5, 6);
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declaration Phase
+var num1 = undefined;
+let sum2;
+let add;
+function addAgian(a, b) {
+  return a + b;
+}
+let num2;
+let sum;
+
+//Execution Phase
+num1 = 21;
+sum2 =  addAgain(num1, num2, 4, 5, 6);
+add = (a, b, c, d, e) => {
+  return a + b + c + d + e;
+};num2 is not defined
+
 ```
 
 11.
@@ -250,7 +333,22 @@ let add = (a, b) => {
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declartion Phase
+function test(a) {
+  let num1 = 21;
+  return add(a, num1);
+}
+let sum;
+let add;
+// Execution Phase
+sum = test(100);
+// declaration phase of test
+let a;
+let num1;
+// execution phase of test
+a = 100;
+num1 = 21;
+add is not defined
 ```
 
 12.
@@ -271,5 +369,28 @@ function add(a, b) {
 <!-- Answer -->
 
 ```js
-// Your code goes here
+// Declaration Phase
+function test(a) {
+  let num1 = 21;
+  return add(a, num1);
+}
+let sum;
+function add(a, b) {
+  return a + b;
+}
+//Execution phase
+sum = test(100)
+// Declaration Phase of test
+let num1;
+//Execution phase
+num1 = 21;
+calling function add;
+// Declaration Phase of add
+let a;
+let b;
+// Execution Phase of add
+a = 100;
+b = 21;
+return value 121 will be saved to sum;
+
 ```
