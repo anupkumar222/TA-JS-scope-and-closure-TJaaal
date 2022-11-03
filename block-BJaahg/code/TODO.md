@@ -387,12 +387,6 @@ let allFunctions = [
   half,
 ];
 
-function allFunctions(array, callback,) {
-  let accumulator = 100;
-  for(let i = 0; i < array.length; i++) {
-    accumulator = callback(accumulator, array[i]);
-  }
-  return accumulator;
-}
+allFunctions.reduce((acc, cv) => cv(acc), 100);
 // Answer is: 447
 ```
