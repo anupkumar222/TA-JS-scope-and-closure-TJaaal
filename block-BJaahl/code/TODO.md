@@ -2,23 +2,35 @@
 
 ```js
 function once(cb) {
-  // your code goes here
+ let result = cb
+ let counter = 0
+ //let result 
+ function inner (n) {
+   counter++
+   if (counter = 1) {
+     return cb;
+    }
+   if (counter > 1) {
+     return `undefined (can't be called twice)`;
+   }
+ }
+ return inner();
 }
-
 // TEST
+
 function sayHello() {
   alert('Call me once!');
 }
 let log = once(sayHello);
 log(); // alert message "You can only call me once!"
-log(); // return undefinde (can't be called twice)
+log(); // return undefined (can't be called twice)
 ```
 
 2. Change the above function in such a way that the function accepts two parameter a callback function and parameter for the callback function. When calling the function pass the parameters.
 
 ```js
-function once(cb) {
-  // your code goes here
+function once(cb, param) {
+  
 }
 
 // TEST
