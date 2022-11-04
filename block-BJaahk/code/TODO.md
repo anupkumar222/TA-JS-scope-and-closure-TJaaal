@@ -60,8 +60,16 @@ The returned function accepts one parameter.
 - If the parameter is the same as the password it will return the object in which we stored the values.
 
 ```js
-function createCache() {
-  // Your code goes here
+function createCache(cb, pwd) {
+  let obj = {};
+  return function (param) {
+    if(param !== pwd) {
+     obj[param] = cb(param);
+     return cb(param);
+    } else {
+      return obj;
+    }
+  }
 }
 
 function add10(num) {
@@ -80,9 +88,20 @@ addCache('foo'); // {12: 22, 100: 110, 1: 11}
 4. Change the above function in such a way that when the returned function is called with any other value than password. It should first check the object where we are storing the argument and return value. If the key is present return the value form the object itself. Otherwise call the callback function with the parameter.
 
 ```js
-function createCache() {
-  // Your code goes here
-}
+function createCache(cb, pwd) {
+  let obj = {};
+  return function (param) {
+    if(param !== pwd) {
+      if(obj[param]) {
+      return  obj[param];
+      }
+     obj[param] = cb(param);
+     return cb(param);
+    } else {
+      return obj;
+    }
+  }
+  }
 
 function add10(num) {
   return num + 10;
