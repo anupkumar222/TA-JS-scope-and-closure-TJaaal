@@ -3,12 +3,19 @@
 1. Construct a function `objOfMatches` that accepts two arrays and a callback. `objOfMatches` will build an object and return it. To build the object, `objOfMatches` will test each element of the first array using the callback to see if the output matches the corresponding element (by index) of the second array. If there is a match, the element from the first array becomes a key in an object, and the element from the second array becomes the corresponding value.
 
 ```js
-function objOfMatches(array1, array2, callback) {}
+function objOfMatches(array1, array2, callback) {
+//  console.log(array1.map(elm1 => {callback(elm1)}))
+   const result = Object.fromEntries(
+    array1.map((array1value, index) => [array1value, array2[index]])
+);
+return result;
+
+}
 
 // TEST
 console.log(
   objOfMatches(
-    ['hi', 'howdy', 'bye', 'later', 'hello'],
+    ['hi', 'howdy', 'bye', 'later', 'hello', 'matter'],
     ['HI', 'Howdy', 'BYE', 'LATER', 'hello'],
     function (str) {
       return str.toUpperCase();
@@ -20,7 +27,13 @@ console.log(
 2. Construct a function `multiMap` that will accept two arrays: an array of values and an array of callbacks. `multiMap` will return an object whose keys match the elements in the array of values. The corresponding values that are assigned to the keys will be arrays consisting of outputs from the array of callbacks, where the input to each callback is the key.
 
 ```js
-function multiMap(arrVals, arrCallbacks) {}
+function multiMap(arrVals, arrCallbacks) {
+ return arrVals.map(elm => {
+   return arrCallbacks.map(ele => {
+      ele(elm);
+    })
+  })
+}
 
 // TEST
 console.log(
